@@ -1,0 +1,26 @@
+{
+  "name": "electron-quick-start",
+  "version": "1.0.0",
+  "description": "A minimal Electron application",
+  "main": "main.js",
+    "scripts": {
+    "dev" : "nf start",
+    "start": "cd frontend && npm start",
+    "test:frontend": "cd frontend && npm run test",
+    "test:backend": "cd backend && npm run test",
+    "test": "npm run test:frontend && npm run test:backend",
+    "electron-dev": "ELECTRON_START_URL=http://localhost:5000 electron --inspect ."
+  },
+  "repository": "https://github.com/electron/electron-quick-start",
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial",
+    "demo"
+  ],
+  "devDependencies": {
+    "electron": "^2.0.0",
+    "foreman": "^3.0.1"
+  }
+}
