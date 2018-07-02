@@ -1,0 +1,2 @@
+# Spitfire
+automated auction bot
