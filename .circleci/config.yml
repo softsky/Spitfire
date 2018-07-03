@@ -15,7 +15,7 @@ jobs:
       - run: cd backend && yarn install
       - run: yarn test
       - run: yarn run build:full:osx
-      - run: for i in */; do zip -r -rm "${i%/}.zip" "$i"; done
+      - run: cd build && for i in */; do zip -r -rm "${i%/}.zip" "$i"; done
       
       - store_artifacts:
           path: build
