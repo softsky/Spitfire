@@ -1,5 +1,8 @@
+const url = require('url');
+const path = require('path');
 // Modules to control application life and create native browser window
 const { app, BrowserWindow } = require('electron')
+
 
 require('./backend');
 
@@ -39,7 +42,7 @@ app.on('ready', createWindow)
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {
-p  // On OS X it is common for applications and their menu bar
+  // On OS X it is common for applications and their menu bar
   // to stay active until the user quits explicitly with Cmd + Q
   if (process.platform !== 'darwin') {
     app.quit()

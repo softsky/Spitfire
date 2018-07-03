@@ -3,13 +3,17 @@
   "version": "1.0.0",
   "description": "A minimal Electron application",
   "main": "main.js",
-    "scripts": {
-    "dev" : "nf start",
+  "scripts": {
+    "dev": "nf start",
     "start": "cd frontend && npm start",
-    "test:frontend": "cd frontend && npm run test",
-    "test:backend": "cd backend && npm run test",
+    "test:frontend": "cd frontend && npm test",
+    "test:backend": "cd backend && npm test",
     "test": "npm run test:frontend && npm run test:backend",
-    "electron-dev": "ELECTRON_START_URL=http://localhost:5000 electron --inspect ."
+    "electron-dev": "ELECTRON_START_URL=http://localhost:5000 electron --inspect .",
+    "build:ui": "cd frontend && npm run build",
+    "build:win": "electron-packager . Spitfire --platform=win32 --out=build",
+    "build:osx": "electron-packager . Spitfire --platform=darwin --out=build",
+    "build:full": "npm run build:ui && npm run build:osx && npm run build:win"
   },
   "repository": "https://github.com/electron/electron-quick-start",
   "keywords": [
@@ -21,6 +25,7 @@
   ],
   "devDependencies": {
     "electron": "^2.0.0",
+    "electron-packager": "^12.1.0",
     "foreman": "^3.0.1"
   }
 }
