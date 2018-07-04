@@ -15,14 +15,7 @@ jobs:
       - run: cd backend && yarn install
       - run: yarn test
 
-      - run:
-          name: "Install wine"
-          command: |
-            sudo add-apt-repository -y ppa:ubuntu-wine/ppa
-            sudo apt-get update
-            sudo apt-get install -y wine
-
-      - run: yarn run build:full
+      - run: yarn run build:osx
       - run: cd build && for i in */; do zip -r -rm "${i%/}.zip" "$i"; done
       
       - store_artifacts:
