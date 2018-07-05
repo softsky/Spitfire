@@ -6,6 +6,9 @@
   "scripts": {
     "dev": "nf start",
     "start": "cd frontend && npm start",
+    "install:frontend": "cd frontend && yarn install",
+    "install:backend": "cd backend && yarn install",
+    "preinstall": "npm run install:frontend && npm run install:backend",
     "test:frontend": "cd frontend && npm test",
     "test:backend": "cd backend && npm test",
     "test": "npm run test:frontend && npm run test:backend",
