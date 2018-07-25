@@ -1,7 +1,7 @@
 {
-  "name": "electron-quick-start",
+  "name": "Spitfire",
   "version": "1.0.0",
-  "description": "A minimal Electron application",
+  "description": "Spitfire application",
   "main": "main.js",
   "scripts": {
     "dev": "nf start",
@@ -14,21 +14,16 @@
     "test": "npm run test:frontend && npm run test:backend",
     "electron-dev": "ELECTRON_START_URL=http://localhost:5000 electron --inspect .",
     "build:ui": "cd frontend && npm run build",
-    "build:win": "electron-packager . Spitfire --platform=win32 --out=build",
-    "build:osx": "electron-packager . Spitfire --platform=darwin --out=build",
-    "build:full": "npm run build:ui && npm run build:osx && npm run build:win",
-    "build:full:osx": "npm run build:ui && npm run build:osx"
+    "dist": "electron-builder --publish never",
+    "build": "yarn build:ui && yarn dist"
   },
-  "repository": "https://github.com/electron/electron-quick-start",
-  "keywords": [
-    "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
-  ],
+  "build": {
+    "appId": "com.spitfire.app"
+  },
+  "keywords": [],
   "devDependencies": {
     "electron": "^2.0.0",
+    "electron-builder": "^20.25.0",
     "electron-packager": "^12.1.0",
     "foreman": "^3.0.1"
   }

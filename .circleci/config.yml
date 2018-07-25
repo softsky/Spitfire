@@ -1,8 +1,8 @@
 version: 2
 jobs:
   build:
-    docker:
-      - image: circleci/node:8.9.0
+    macos:
+      xcode: "9.0"
       
     steps:
       - checkout
@@ -15,8 +15,8 @@ jobs:
       - run: cd backend && yarn install
       - run: yarn test
 
-      - run: yarn run build:osx
-      - run: cd build && for i in */; do zip -r -rm "${i%/}.zip" "$i"; done
+      - run: yarn run build
+      - run: mv ./dist/*.dmg ./build
       
       - store_artifacts:
           path: build
