@@ -1,8 +1,8 @@
 version: 2
 jobs:
   build:
-    docker:
-      - image: circleci/node:8.9.0
+    macos:
+      xcode: "9.0"
       
     steps:
       - checkout

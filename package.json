@@ -14,14 +14,11 @@
     "test": "npm run test:frontend && npm run test:backend",
     "electron-dev": "ELECTRON_START_URL=http://localhost:5000 electron --inspect .",
     "build:ui": "cd frontend && npm run build",
-    "build:tiny": "electron-builder",
-    "build": "npm run build:ui && electron-builder --publish never"
+    "dist": "electron-builder --publish never",
+    "build": "yarn build:ui && yarn dist"
   },
   "build": {
-    "appId": "com.spitfire.app",
-    "mac": {
-      "target": ["dmg"]
-    }
+    "appId": "com.spitfire.app"
   },
   "keywords": [],
   "devDependencies": {
