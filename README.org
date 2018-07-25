@@ -1,23 +1,26 @@
-# Spitfire
+* Spitfire
 
+** Prerequisites
 Before you start, make sure you have [yarn](https://yarnpkg.com/en) and LTS [Node](https://nodejs.org) installed.
 
 Cloning project with `git submodules`.
 
-```
+#+BEGIN_SRC sh
   git clone --recursive git@github.com:softsky/Spitfire.git
   cd Spitfire
-```
+#+END_SRC
 
+** Installation and Run
+*** Install dependencies
 
-## Install dependencies
-
-```
+#+BEGIN_SRC sh
   yarn install
-```
+#+END_SRC
 
-## Run development environment
 
-```
+*** Run development environment
+
+#+BEGIN_SRC sh
   yarn run dev
-```
+#+END_SRC
+
