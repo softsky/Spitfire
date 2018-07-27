@@ -16,7 +16,8 @@ jobs:
       - run: yarn test
 
       - run: yarn run build
-      - run: mv ./dist/*.dmg ./build
+      - run: mkdir ./build
+      - run: find ./dist -name \*.dmg -exec cp {} ./build/ \;
       
       - store_artifacts:
           path: build

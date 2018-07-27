@@ -18,7 +18,10 @@
     "build": "yarn build:ui && yarn dist"
   },
   "build": {
-    "appId": "com.spitfire.app"
+    "appId": "com.spitfire.app",
+    "mac": {
+      "target": ["dmg"]
+    }
   },
   "keywords": [],
   "devDependencies": {
