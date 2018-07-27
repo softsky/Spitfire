@@ -15,7 +15,7 @@ Cloning project with `git submodules`.
 
 #+BEGIN_SRC sh
   yarn install
-#+END_SRC
+hiarn#+END_SRC
 
 
 *** Run development environment
