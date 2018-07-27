@@ -1,19 +1,20 @@
 const url = require('url');
 const path = require('path');
 // Modules to control application life and create native browser window
-const { app, BrowserWindow } = require('electron')
+const { app: electronApp, BrowserWindow } = require('electron')
+const App = require('./backend');
 
-
-require('./backend');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
 
-function createWindow () {
+async function createWindow () {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 1410, height: 690, frame: false});
+  mainWindow = new BrowserWindow({width: 1155, height: 690, frame: false});
   mainWindow.setResizable(false);
+
+  new App(mainWindow);
 
   // and load the index.html of the app.
   const startUrl = process.env.ELECTRON_START_URL || url.format({
@@ -22,7 +23,7 @@ function createWindow () {
     slashes: true
   });
 
-  mainWindow.loadURL(startUrl)
+  mainWindow.loadURL(startUrl);
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
@@ -39,18 +40,18 @@ function createWindow () {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', createWindow)
+electronApp.on('ready', createWindow)
 
 // Quit when all windows are closed.
-app.on('window-all-closed', function () {
+electronApp.on('window-all-closed', function () {
   // On OS X it is common for applications and their menu bar
   // to stay active until the user quits explicitly with Cmd + Q
   if (process.platform !== 'darwin') {
-    app.quit()
+    electronApp.quit()
   }
 })
 
-app.on('activate', function () {
+electronApp.on('activate', function () {
   // On OS X it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
   if (mainWindow === null) {
