@@ -20,7 +20,9 @@
   "build": {
     "appId": "com.spitfire.app",
     "mac": {
-      "target": ["dmg"]
+      "target": [
+        "dmg"
+      ]
     }
   },
   "keywords": [],
@@ -29,5 +31,8 @@
     "electron-builder": "^20.25.0",
     "electron-packager": "^12.1.0",
     "foreman": "^3.0.1"
+  },
+  "dependencies": {
+    "axios-https-proxy-fix": "^0.17.1"
   }
 }
