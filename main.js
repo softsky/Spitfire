@@ -1,7 +1,7 @@
 const url = require('url');
 const path = require('path');
 // Modules to control application life and create native browser window
-const { app: electronApp, BrowserWindow } = require('electron');
+const { app: electronApp, BrowserWindow, Menu } = require('electron');
 const App = require('./backend');
 
 
@@ -35,6 +35,32 @@ async function createWindow () {
     // when you should delete the corresponding element.
     mainWindow = null;
   });
+
+  // To enable the clipboard features and copy/paste shortcuts we should configure app’s menu
+  const template = [
+    {
+      label: "Spitfire",
+      submenu: [
+        { label: "About", selector: "orderFrontStandardAboutPanel:" },
+        { type: "separator" },
+        { label: "Quit", accelerator: "Command+Q", click: function() { app.quit(); }}
+      ]
+    },
+    {
+      label: "Edit",
+      submenu: [
+        { label: "Undo", accelerator: "CmdOrCtrl+Z", selector: "undo:" },
+        { label: "Redo", accelerator: "Shift+CmdOrCtrl+Z", selector: "redo:" },
+        { type: "separator" },
+        { label: "Cut", accelerator: "CmdOrCtrl+X", selector: "cut:" },
+        { label: "Copy", accelerator: "CmdOrCtrl+C", selector: "copy:" },
+        { label: "Paste", accelerator: "CmdOrCtrl+V", selector: "paste:" },
+        { label: "Select All", accelerator: "CmdOrCtrl+A", selector: "selectAll:" }
+      ]
+    }
+  ];
+
+  Menu.setApplicationMenu(Menu.buildFromTemplate(template));
 }
 
 // This method will be called when Electron has finished
