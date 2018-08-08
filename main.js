@@ -2,16 +2,11 @@ const url = require('url');
 const path = require('path');
 // Modules to control application life and create native browser window
 const { app: electronApp, BrowserWindow, Menu } = require('electron');
-const App = require('./backend');
+const app = require('./backend');
 
 
-// Keep a global reference of the window object, if you don't, the window will
-// be closed automatically when the JavaScript object is garbage collected.
-// let mainWindow;
-app = null;
-
-async function createWindow () {
-  app = new App();
+async function runApp() {
+  app.init();
 
   // To enable the clipboard features and copy/paste shortcuts we should configure app’s menu
   const template = [
@@ -43,7 +38,7 @@ async function createWindow () {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-electronApp.on('ready', createWindow);
+electronApp.on('ready', runApp);
 
 // Quit when all windows are closed.
 electronApp.on('window-all-closed', function () {
@@ -58,11 +53,9 @@ electronApp.on('activate', function () {
   // On OS X it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
   if (!app.hasWindow()) {
-    createWindow();
+    runApp();
   }
 });
-
-createWindow();
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
